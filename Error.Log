@@ -1,9 +1,0 @@
-
-
-Thu Jun  6 02:01:45 2024
-<<ERROR polling>>
-Traceback (most recent call last):
-  File "c:\Cods\STest\main.py", line 69, in telegram_polling
-TypeError: object NoneType can't be used in 'await' expression
-
-<<ERROR polling>>

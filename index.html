@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		.block{
+			width: 600px;
+			margin: 0 auto;
+			padding: 25px;
+			font-size: 30px;
+			background: #f1f1f1;
+		}
+		.block a{
+			text-decoration: none;
+		}
+		.block input, .block textarea{
+			width: 96%;
+			padding: 2%;
+			background: #f1f1f1;
+		}
+	</style>
+
+	<!-- Remember to include jQuery :) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+<!-- jQuery Cookies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/latest/js.cookie.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="block">
+	<h1>jQuery + Ajax форма отправки данных в Telegram</h1>
+<form id="datas">
+	<p>
+  		<label for="phone">Номер телефона *</label><br>
+  		<input id="phone" autocomplete="off" placeholder="+70001234567" maxlength="12" name="phone" class="phone" pattern="^\+7\d{3}\d{7}$">
+  	</p>
+  	<p>
+  		<label for="descr">Описание (не обязательно)</label><br>
+  		<textarea id="descr" placeholder="Введите текст" name="descr" class="descr"></textarea>
+  	</p>
+
+  	<a href="#" id="datas-btn">ОТПРАВИТЬ</a>
+
+  	<p class="ressult"></p>
+
+</form>
+ <p>
+        <a href="https://t.me/iartsorders">Канал: @iartsorders</a>
+        <br>  
+        <a href="https://devarts.pro/676-telegram-nastraivaem-peredachu-dannyh-iz-form-na-sayte-v-chat.html">Инструкция</a>
+    </p>
+</div>
+
+<script>
+
+// Защита от «Дурака» 1. Проверяем куки на количество отправленных заявок и обрубаем очередную отправку после 2 попыток
+if(Cookies.get('sent') == '2'){
+// Удаляем форму и на ее место вставляем текст
+	$('#datas').empty().append('Вы отправили слишком много заявок. Попробуйте повторить позже. <br><br>От вас получены следующие данные: <br><br> <strong>Номер телефона:</strong> ' + Cookies.get('phone') + '<br><strong>Краткое описание:</strong> '  + Cookies.get('text'));
+}
+
+
+
+	// ONCLICK IN-MODAL BUTTON
+	
+	// Вешаем событие на кнопку отправки
+	$('#datas-btn').click(function(){
+
+		// Очищаем поле с результатом 
+		$('p.ressult').empty();
+
+		// Защита от «Дурака» 2. Проверяем наличие метки в виде CSS класса и блокируем повторную отправку заявки
+		if($('#datas-btn').hasClass('sent')){
+			$('p.ressult').css('color', 'red').append('Вы уже отправили заявку. Если была допущена ошибка — обновите страницу и отправьте заново.');
+		}else{
+
+			var f_phone = $('input.phone').val(),
+				f_descr = $('textarea.descr').val();  	  	
+	
+			// Проверяем корректность номера телефона (только РФ)
+			if(f_phone == '' || !validatePhone(f_phone)){
+
+				$('p.ressult').css('color', 'red').append('Некорректно заполнен номер телефона');
+
+			}else{
+				// Если Телефон корректный — выводим результат
+				$('p.ressult').css('color', 'red').append('Заявка отправлена!<br>Мы свяжемся с вами в ближайшее время');
+
+				// Защита от «Дурака» 2. Вешаем метку в виде CSS класса и блокируем повторную отправку заявки
+				$('#datas-btn').addClass('sent');
+
+				// Заносим номер телефона и текст в куки
+				Cookies.set('phone', f_phone);
+				Cookies.set('text', f_descr);
+
+				// Защита от «Дурака» 1. Даем две попытки на отправку заяявок. Фиксируем их в куках
+				if(!Cookies.get('sent')){
+					Cookies.set('sent', '1');
+				}else if(Cookies.get('sent') == '1'){
+					Cookies.set('sent', '2');
+				}				
+
+				//если все проверки пройдены формируем текстовое собщение				
+				var text = 'Новая заявка:\n ' + f_descr +',\n ' + f_phone;
+			
+				//и вызываем функцию отправки в телегу
+				send_tg(text);
+
+				// отладочное сообщение
+				// $('p.ressult').append('<br><br>' + f_phone + ', ' + f_descr);
+ 		
+			}
+		
+		}
+
+	});
+
+// STATIC FUNCTIONS
+// Защита от «Дурака» 3. Блокируем возможность вставки в поле с номером телефона, дабы отбить желание спамить нам заявки
+$('input.phone').bind('cut copy paste', function (e) {
+    e.preventDefault();
+});
+
+// Валидация телефона через регулярные выражения
+function validatePhone(phone){
+	let regex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+ return regex.test(phone);
+}
+
+// AJAX отправка данных в ТГ
+function send_tg(text){
+
+	// var chatid = "-1001518691100",
+	// token = "5707365668:AAFtz5CEMsOzNxS71b5v7EDRS_4zfYTSiKA";
+			var chatid = '-1002247372621',
+					token = '6384412652:AAE5RJVrojubyD4o3Azm-me50RCO1YBGdx0',
+  				z = $.ajax({
+				
+				type: "POST",  
+				url: "https://api.telegram.org/bot"+token+"/sendMessage?chat_id="+chatid,
+  			data: "parse_mode=HTML&text="+encodeURIComponent(text), 
+  }); 
+};
+
+</script>
+
+
+</body>
+
+</html>
+
