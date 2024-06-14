@@ -26,7 +26,7 @@ def main():
             return render_template('sended.html')
         else:
             print('Nan')
-    return render_template('test.html')
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
