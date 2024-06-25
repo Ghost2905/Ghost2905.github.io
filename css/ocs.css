@@ -46,8 +46,8 @@ img.board-img {
 }
 
 img.board-img_l {
-    width: 110px;
-    height: 73px;
+    max-width: 110px;
+    max-height: 73px;
 }
 
 img.board-img_l:nth-child(2) {
