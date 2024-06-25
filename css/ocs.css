@@ -44,3 +44,13 @@ img.emblem {
 img.board-img {
     width: 350px;
 }
+
+img.board-img_l {
+    width: 110px;
+    height: 73px;
+}
+
+img.board-img_l:nth-child(2) {
+    margin-left: 5px;
+    margin-right: 5px;
+}
