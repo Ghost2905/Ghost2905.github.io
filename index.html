@@ -1,68 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-
-	<style>
-		.block{
-			width: 600px;
-			margin: 0 auto;
-			padding: 25px;
-			font-size: 30px;
-			background: #f1f1f1;
-		}
-		.block a{
-			text-decoration: none;
-		}
-		.block input, .block textarea{
-			width: 96%;
-			padding: 2%;
-			background: #f1f1f1;
-		}
-	</style>
-
-	<!-- Remember to include jQuery :) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-
-<!-- jQuery Modal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
-<!-- jQuery Cookies -->
-<script src="test.js"></script> 
-
-
-</head>
-<body>
-
-<div class="block">
-	<h1>jQuery + Ajax форма отправки данных в Telegram</h1>
-<form id="datas">
-	<p>
-  		<label for="phone">Номер телефона *</label><br>
-  		<input id="phone" autocomplete="off" placeholder="+70001234567" maxlength="12" name="phone" class="phone" pattern="^\+7\d{3}\d{7}$">
-  	</p>
-  	<p>
-  		<label for="descr">Описание (не обязательно)</label><br>
-  		<textarea id="descr" placeholder="Введите текст" name="descr" class="descr"></textarea>
-  	</p>
-
-  	<a href="#" id="datas-btn">ОТПРАВИТЬ</a>
-
-  	<p class="ressult"></p>
-
-</form>
- <p>
-        <a href="https://t.me/iartsorders">Канал: @iartsorders</a>
-        <br>  
-        <a href="https://devarts.pro/676-telegram-nastraivaem-peredachu-dannyh-iz-form-na-sayte-v-chat.html">Инструкция</a>
-    </p>
-</div>
-
-
-</body>
-
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+      <title>Военная служба по контракту</title>
+      <link rel= "stylesheet" type= "text/css" href= "css/ocs.css">
+      <link rel="shortcut icon" href="img/emblem.png">
+      <link rel="icon" type="image/png" sizes="192x192" href="img/192.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="img/180.png">
+      <link href="css/profile.css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/latest/js.cookie.min.js"></script>
+   </head>
+   <body style="margin: 0px;">
+      <div id="page-container" >
+         <main class="main">
+            <div class="block">
+               <div class="info-block">
+                  <div class="emblem">
+                     <img class="emblem" src="img/emblem.png">
+                  </div>
+                  <h3 style="text-align: center; font-size: 23px;" data-mce-style="text-align: center;">Военная служба по контракту</h3>
+                  <p style="text-align: center;" data-mce-style="text-align: center;">Служба в Пограничном Управлении ФСБ России по Саратовской и Самарской областям</p>
+                  <p style="text-align: center;" data-mce-style="text-align: center;">Есть такая профессия - Родину защищать (c)</p>
+                  <div class="main-img">
+                     <img class="board-img" src="img/test.jpg">
+                  </div>
+                  <h1 style="text-align: center;" data-mce-style="text-align: center;">Сотрудник пограничных органов</h1>
+                  <h1 style="text-align: center;" data-mce-style="text-align: center;">ФСБ России</h1>
+                  <h3 style="text-align: center;" data-mce-style="text-align: center;">Денежное довольствие</h3>
+                  <h3 style="text-align: center;" data-mce-style="text-align: center;">45 000 - 70 000 ₽</h3>
+                  <table>
+                     <tbody>
+                        <tr>
+                           <td style="width: 50%; text-align: center; vertical-align: top;">
+                              <p><img src="img/med.png" width="100" height="100"><br></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">Бесплатное медицинское</span></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">обеспечение</span></p>
+                           </td>
+                           <td style="width: 50%; text-align: center; vertical-align: top;">
+                              <p><img src="img/sav.png" width="100" height="100"><br></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">Бесплатное страхование</span></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">жизни и здоровья</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="width: 50%; text-align: center; vertical-align: top;">
+                              <p><img src="img/ipo.png" width="100" height="100"><br></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">Военная ипотека</span></p>
+                           </td>
+                           <td style="width: 50%; text-align: center; vertical-align: top;">
+                              <p><img src="img/kva.png" width="100" height="100"><br></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">Служебные квартиры</span></p>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="width: 50%; text-align: center; vertical-align: top;">
+                              <p><img src="img/otp.png" width="100" height="100"><br></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">Оплачиваемый отпуск 63 суток и дни дороги к месту проведения отпуска и обратно</span></p>
+                           </td>
+                           <td style="width: 50%; text-align: center; vertical-align: top;">
+                              <p><img src="img/cal.png" width="100" height="100"><br></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">Льготная выслуга лет:</span></p>
+                              <p><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;">1 год за 1,5 года</span></p>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <article class="title-and-list">
+                     <div class="title-and-list__title">Требования:</div>
+                     <div><em>Сотрудником органов федеральной службы безопасности может быть гражданин Российской Федерации, не имеющий гражданства (подданства) иностранного государства, способный по своим личным, профессиональным<br>и психологическим качествам, возрасту, образованию и состоянию здоровья исполнять возложенные на него обязанности. </em><br><a href="http://www.consultant.ru/document/cons_doc_LAW_6300/" data-mce-href="http://www.consultant.ru/document/cons_doc_LAW_6300/">(Федеральный закон от 3 апреля 1995 г. №40-ФЗ "О федеральной службе безопасности")</a></div>
+                     <ul class="title-and-list__list">
+                        <li>Возраст от 18 до 38 лет</li>
+                        <li>Уровень образования не ниже среднего общего (11 классов)</li>
+                        <li>Военная служба по призыву (зачисление без прохождения военной службы по окончании Среднего профессионального или Высшего учебного заведения)</li>
+                        <li>Отсутствие судимости в настоящее время или в прошлом</li>
+                        <li>Отсутствие близких родственников, постоянно проживающих за пределами РФ</li>
+                        <li>Отсутствие административного наказания в виде лишения водительских прав за нарушение ПДД</li>
+                     </ul>
+                  </article>
+                  <article class="title-and-list">
+                     <div class="title-and-list__title">Условия:</div>
+                     <ul class="title-and-list__list">
+                        <li>Минимальный срок контракта 5 лет</li>
+                        <li>Стаж службы зачисляется 1 год за 1,5 года</li>
+                        <li>Денежное довольствие зависит от оклада по воинскому званию, должности, срока службы, а также объема и значимости выполняемых задач</li>
+                        <li>Обеспечение военной формой одежды, служебным жильем</li>
+                        <li>Ежегодный оплачиваемый отпуск до 63 суток и дни дороги к месту проведения отпуска и обратно</li>
+                        <li>Военная ипотека</li>
+                     </ul>
+                  </article>
+                  <h4 style="text-align: center;" data-mce-style="text-align: center;">Заполните анкету и Мы свяжемся с Вами</h4>
+                  <form id="datas">
+                     <div class="field-last_name">
+                        <label for="last_name" class="label">Фамилия</label>
+                        <input class="last_name" autocomplete="off" name="last_name" id="last_name">
+                     </div>
+                     <div class="field-first_name">
+                        <label for="first_name" class="label">Имя</label>
+                        <input class="first_name" autocomplete="off" name="first_name" id="first_name">
+                     </div>
+                     <div class="field-patronymic">
+                        <label for="patronymic" class="label">Отчество</label>
+                        <input class="patronymic" autocomplete="off" name="patronymic" id="patronymic">
+                     </div>
+                     <div class="field-birthday">
+                        <label for="birthday" class="label">Дата рождения</label>
+                        <input class="birthday" autocomplete="off" name="birthday" id="birthday">
+                     </div>
+                     <div class="citizenship">
+                        <label for="citizenship" class="label">Гражданство</label>
+                        <input class="citizenship" autocomplete="off" name="citizenship" id="citizenship">
+                     </div>
+                     <div class="region">
+                        <label for="region" class="label">Регион проживания</label>
+                        <input class="region" autocomplete="off" name="region" id="region">
+                     </div>
+                     <div class="education">
+                        <label for="education" class="label">Уровень образование</label>
+                        <input class="education" autocomplete="off" name="education" id="education">
+                     </div>
+                     <div class="service">
+                        <label for="service" class="label">Наличие службы по призыву(Да/Нет)</label>
+                        <input class="service" autocomplete="off" name="service" id="service">
+                     </div>
+                     <div class="number_tel">
+                        <label for="number_tel" class="label">Номер телефона</label>
+                        <input id="phone" autocomplete="off" type="number" maxlength="12" name="phone" class="phone" pattern="^\+7\d{3}\d{7}$">
+                     </div>
+                     <div class="mail">
+                        <label for="mail" class="label">Электронная почта</label>
+                        <input class="mail" autocomplete="off" name="mail" id="mail">
+                     </div>
+                     <div class="btn55">
+                        <a id="datas-btn">Отправить</a>
+                     </div>
+                     <p class="ressult"></p>
+                  </form>
+                  <div class="base-copyright__text-item">Пограничное Управление ФСБ России по Саратовской и Самарской областям</div>
+                  <div class="base-copyright__text-item">Служба в городе Самара</span></strong></div>
+                  <div class="base-copyright__text-item">Адрес: 443098, г. Самара, Черемшанская улица, 230</div>
+                  <div class="base-copyright__text-item">Контактные данные:</div>
+                  <div class="base-copyright__text-item">+7(987)557-84-47</div>
+                  <div class="base-copyright__text-item" style="text-align: center;" data-mce-style="text-align: center;"><span style="font-size: 8pt;" data-mce-style="font-size: 8pt;"><a href="mailto:Alexceevich@yandex.ru" data-mce-href="mailto:mail@yandex.ru">text@yandex.ru</a></span></div>
+               </div>
+            </div>
+         </main>
+      </div>
+      <script src="script/script.js"></script>
+   </body>
 </html>
-

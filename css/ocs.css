@@ -1,0 +1,40 @@
+@font-face {
+    font-family: Pompadur; /* Гарнитура шрифта */
+    src: url(font.ttf); /* Путь к файлу со шрифтом */
+}
+h1, h2, h3, h4, li, p, div, em, label {
+    font-family: Pompadur;
+    color: #343434;
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.block {
+    max-width: 375px;
+    background: #e5e5e5;
+    padding: 8px;
+}
+
+.emblem {
+    width: 100%;
+    text-align: center;
+}
+
+img.emblem {
+    width: 150px;
+}
+
+.main-img {
+    width: 100%;
+    text-align: center;
+}
+
+img.board-img {
+    width: 350px;
+}
