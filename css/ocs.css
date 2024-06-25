@@ -7,8 +7,12 @@ h1, h2, h3, h4, li, p, div, em, label {
     color: #343434;
 }
 
+.em {
+    text-align: justify;
+}
 
 .main {
+    background: darkgrey;
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: wrap;
@@ -16,9 +20,11 @@ h1, h2, h3, h4, li, p, div, em, label {
 }
 
 .block {
+    margin-top: 10px;
     max-width: 375px;
-    background: #e5e5e5;
-    padding: 8px;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
 }
 
 .emblem {
