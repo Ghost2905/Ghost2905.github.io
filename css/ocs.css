@@ -7,6 +7,10 @@ h1, h2, h3, h4, li, p, div, em, label {
     color: #343434;
 }
 
+h3 {
+    text-align: center;
+}
+
 .em {
     text-align: justify;
 }
@@ -66,6 +70,8 @@ img.board-img_l:nth-child(2) {
     width: 100%;
     display: grid;
     justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 25px;
 }
 
 .mail-i-d {
@@ -79,4 +85,39 @@ img.board-i_l {
     min-height: 79px;
     border: 2px #a7a7a7 solid;
     border-radius: 5px;
+}
+
+.field-last_name, .field-first_name,
+.field-patronymic, .field-birthday,
+.number_tel, .citizenship,
+.region, .education, .service,
+.mail{
+    display: inline-grid;
+    margin-top: 5px;
+    width: 96%;
+}
+
+input {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+
+a#datas-btn {
+    display: block;
+}
+
+.btn55 {
+    width: 100%;
+    text-align: -webkit-center;
+}
+
+a#datas-btn {
+    background: #0560af;
+    color: rgb(255, 255, 255);
+    width: 200px;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
 }
