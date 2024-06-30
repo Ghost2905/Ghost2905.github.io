@@ -73,5 +73,10 @@ img.board-img_l:nth-child(2) {
 }
 
 img.board-i_l {
-    width: 115px;
+    max-width: 115px;
+    max-height: 79px;
+    min-width: 115px;
+    min-height: 79px;
+    border: 2px #a7a7a7 solid;
+    border-radius: 5px;
 }
