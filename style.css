@@ -20,3 +20,6 @@ table.iksweb th {
 td {
     color: white;
 }
+tbody {
+    background: black;
+}
